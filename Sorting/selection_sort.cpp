@@ -1,47 +1,34 @@
-#include <bits/stdc++.h> 
-using namespace std; 
-  
-void swap(int *xp, int *yp)  
-{  
-    int temp = *xp;  
-    *xp = *yp;  
-    *yp = temp;  
-}  
-  
-void selectionSort(int arr[], int n)  
-{  
-    int i, j, min_idx;  
-  
-    // One by one move boundary of unsorted subarray  
-    for (i = 0; i < n-1; i++)  
-    {  
-        // Find the minimum element in unsorted array  
-        min_idx = i;  
-        for (j = i+1; j < n; j++)  
-        if (arr[j] < arr[min_idx])  
-            min_idx = j;  
-  
-        // Swap the found minimum element with the first element  
-        swap(&arr[min_idx], &arr[i]);  
-    }  
-}  
-  
-/* Function to print an array */
-void printArray(int arr[], int size)  
-{  
-    int i;  
-    for (i=0; i < size; i++)  
-        cout << arr[i] << " ";  
-    cout << endl;  
-}  
-  
-// Driver program to test above functions  
-int main()  
-{  
-    int arr[] = {64, 25, 12, 22, 11};  
-    int n = sizeof(arr)/sizeof(arr[0]);  
-    selectionSort(arr, n);  
-    cout << "Sorted array: \n";  
-    printArray(arr, n);  
-    return 0;  
-}  
+#include<stdio.h>
+int main(){
+   /* Here i & j for loop counters, temp for swapping,
+    * count for total number of elements, number[] to
+    * store the input numbers in array. You can increase
+    * or decrease the size of number array as per requirement
+    */
+   int i, j, count, temp, number[25];
+
+   printf("How many numbers u are going to enter?: ");
+   scanf("%d",&count);
+
+   printf("Enter %d elements: ", count);
+   // Loop to get the elements stored in array
+   for(i=0;i<count;i++)
+      scanf("%d",&number[i]);
+ 
+   // Logic of selection sort algorithm
+   for(i=0;i<count;i++){
+      for(j=i+1;j<count;j++){
+         if(number[i]>number[j]){
+            temp=number[i];
+            number[i]=number[j];
+            number[j]=temp;
+         }
+      }
+   }
+
+   printf("Sorted elements: ");
+   for(i=0;i<count;i++)
+      printf(" %d",number[i]);
+
+   return 0;
+}
